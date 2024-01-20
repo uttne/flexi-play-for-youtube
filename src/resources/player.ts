@@ -123,9 +123,7 @@ export class YouTubePlayer {
     private _updateSeekTimeTimerId: NodeJS.Timeout | undefined = undefined;
 
     private _getSeekTime(): string {
-        const currentTime = this._seekTimerId
-            ? this._seekTime
-            : this.getCurrentTime();
+        const currentTime = this._seekTime;
 
         const hour = Math.floor(currentTime / 3600);
         const minute = Math.floor((currentTime - hour * 3600) / 60);
@@ -210,7 +208,6 @@ export class YouTubePlayer {
         }
 
         this._seekTimerId = undefined;
-        this._seekTime = 0;
         this._seekStartState = 0;
     }
 }
