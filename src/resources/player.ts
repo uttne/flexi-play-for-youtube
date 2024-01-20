@@ -166,7 +166,7 @@ export class YouTubePlayer {
     }
 
     private _getInterval() {
-        return 0.5;
+        return 0.8;
     }
     _seekTime: number = 0;
     _seekTimerId: NodeJS.Timeout | undefined = undefined;
