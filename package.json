@@ -1,0 +1,16 @@
+{
+    "name": "flexi-play-for-youtube",
+    "version": "0.1.0",
+    "description": "An extension that makes seeking on YouTube more convenient.",
+    "main": "index.js",
+    "repository": "https://github.com/uttne/flexi-play-for-youtube.git",
+    "author": "uttne <uttne.mkr@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsc"
+    },
+    "devDependencies": {
+        "@types/chrome": "^0.0.258",
+        "typescript": "^5.3.3"
+    }
+}

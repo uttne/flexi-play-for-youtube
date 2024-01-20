@@ -1,0 +1,36 @@
+{
+    "name": "FlexiPlay for YouTube",
+    "description": "An extension that makes seeking on YouTube more convenient.",
+    "version": "0.1.0",
+    "manifest_version": 3,
+    "permissions": [],
+    "host_permissions": [
+        "https://www.youtube.com/"
+    ],
+    "icons": {
+        "16": "/icons/icon16.png",
+        "32": "/icons/icon32.png",
+        "48": "/icons/icon48.png",
+        "128": "/icons/icon128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.youtube.com/*"
+            ],
+            "js": [
+                "dist/index.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "dist/resources/*"
+            ],
+            "matches": [
+                "https://www.youtube.com/*"
+            ]
+        }
+    ]
+}
