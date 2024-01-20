@@ -12,6 +12,15 @@ function getPlayer(): YouTubePlayer {
 
 let downKey: string | undefined = undefined;
 function keydown(e: KeyboardEvent) {
+    const target: any = e.target;
+    const tagName: string = target.tagName;
+    const isContentEditable: boolean = target.isContentEditable;
+
+    if (tagName === "INPUT" || tagName === "TEXTAREA" || isContentEditable) {
+        // 検索ボックスやコメントで文字を入力する際のキーイベントは無視する
+        return;
+    }
+
     if (downKey) return;
     downKey = e.code;
     switch (e.code) {
@@ -26,6 +35,14 @@ function keydown(e: KeyboardEvent) {
     }
 }
 function keyup(e: KeyboardEvent) {
+    const target: any = e.target;
+    const tagName: string = target.tagName;
+    const isContentEditable: boolean = target.isContentEditable;
+
+    if (tagName === "INPUT" || tagName === "TEXTAREA" || isContentEditable) {
+        // 検索ボックスやコメントで文字を入力する際のキーイベントは無視する
+        return;
+    }
     switch (e.code) {
         case "KeyA":
         case "KeyD": {
