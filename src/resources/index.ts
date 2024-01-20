@@ -1,6 +1,6 @@
 import { writeLog } from "./module.js";
 import { YouTubePlayer } from "./player.js";
-writeLog("insert script");
+writeLog("inserted script");
 
 let _playerCache: YouTubePlayer | null = null;
 function getPlayer(): YouTubePlayer {
@@ -10,38 +10,42 @@ function getPlayer(): YouTubePlayer {
     return (_playerCache = new YouTubePlayer());
 }
 
-function getInterval(): number {
-    return 0.5;
-}
-
+let downKey: string | undefined = undefined;
 function keydown(e: KeyboardEvent) {
+    if (downKey) return;
+    downKey = e.code;
     switch (e.code) {
-        case "KeyU": {
-            console.log("down U");
-            const player = getPlayer();
-            const interval = getInterval();
-            const max = player.getDuration();
-
-            const newTime = player.getCurrentTime() - interval;
-            player.seekTo(Math.min(newTime, max));
-
+        case "KeyA": {
+            getPlayer().startSeek(true);
             break;
         }
-        case "KeyO": {
-            console.log("down O");
-            const player = getPlayer();
-            const interval = getInterval();
-
-            const newTime = player.getCurrentTime() + interval;
-            player.seekTo(Math.max(newTime, 0));
+        case "KeyD": {
+            getPlayer().startSeek(false);
             break;
         }
     }
+}
+function keyup(e: KeyboardEvent) {
+    switch (e.code) {
+        case "KeyA":
+        case "KeyD": {
+            getPlayer().endSeek();
+            break;
+        }
+    }
+
+    downKey = undefined;
 }
 
 function main() {
     document.removeEventListener("keydown", keydown);
     document.addEventListener("keydown", keydown);
+
+    document.removeEventListener("keyup", keyup);
+    document.addEventListener("keyup", keyup);
+
+    // init
+    getPlayer();
 }
 
 main();
