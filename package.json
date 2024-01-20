@@ -7,10 +7,16 @@
     "author": "uttne <uttne.mkr@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "build": "tsc"
+        "build": "rollup -c"
     },
     "devDependencies": {
+        "@rollup/plugin-typescript": "^11.1.6",
         "@types/chrome": "^0.0.258",
+        "node-sass": "^9.0.0",
+        "rollup": "^4.9.5",
+        "rollup-plugin-delete": "^2.0.0",
+        "rollup-plugin-scss": "^4.0.0",
+        "tslib": "^2.6.2",
         "typescript": "^5.3.3"
     }
 }
