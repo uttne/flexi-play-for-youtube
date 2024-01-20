@@ -185,6 +185,7 @@ export class YouTubePlayer {
                 0,
                 Math.min(this.getDuration(), seekTime)
             );
+            this.seekTo(this._seekTime);
             this._popupSeekView();
         };
         this._seekTimerId = setInterval(updateInterval, 100);
